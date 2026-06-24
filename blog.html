@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Wild Grove Resort — Travel Stories & Guides</title>
+    <meta name="description" content="Travel tips, nature stories & insider guides from Wild Grove Resort, Anaikatti. Weekend getaways from Coimbatore, night safari guides, farm-to-table experiences & more.">
+    <meta property="og:title" content="Blog | Wild Grove Resort">
+    <meta property="og:image" content="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1200,fit=crop/dWxB7K93zNS9bx60/whatsapp-image-2025-12-08-at-1.59.19-pm-C1lHzknbqo8E0XJY.jpeg">
+    <style>
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{scroll-behavior:smooth}
+        body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:#2d3436;line-height:1.8;background:#fff}
+        a{text-decoration:none;color:inherit}
+        img{max-width:100%;height:auto;display:block}
+        :root{--primary:#2d6a4f;--primary-dark:#1b4332;--accent:#d4a373;--accent-dark:#b07d4f;--light-bg:#f8f9f0;--dark:#1a1a2e;--white:#fff;--shadow:0 4px 24px rgba(0,0,0,0.08);--shadow-lg:0 8px 40px rgba(0,0,0,0.12)}
+
+        .navbar{background:var(--primary-dark);padding:14px 0;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,0.1)}
+        .navbar .container{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+        .nav-logo{font-size:1.4rem;font-weight:700;color:var(--white);display:flex;align-items:center;gap:10px}
+        .nav-logo img{width:40px;height:40px;border-radius:50%;object-fit:cover}
+        .nav-links{display:flex;gap:24px;align-items:center}
+        .nav-links a{color:rgba(255,255,255,0.85);font-weight:500;font-size:0.95rem;transition:color 0.3s}
+        .nav-links a:hover{color:var(--accent)}
+        .nav-book{background:var(--accent)!important;color:var(--white)!important;padding:8px 22px!important;border-radius:50px!important;font-weight:600!important}
+
+        .page-hero{position:relative;height:50vh;min-height:340px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--white);overflow:hidden}
+        .page-hero-bg{position:absolute;inset:0;background:url('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1920,fit=crop/dWxB7K93zNS9bx60/bonfire-mnlqLwRznlFezjl7.jpg') center/cover no-repeat}
+        .page-hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.3),rgba(0,0,0,0.65))}
+        .page-hero-content{position:relative;z-index:2}
+        .page-hero h1{font-size:3rem;margin-bottom:12px;text-shadow:0 2px 16px rgba(0,0,0,0.3)}
+        .page-hero p{font-size:1.15rem;opacity:0.9;max-width:600px;margin:0 auto}
+
+        .container{max-width:1200px;margin:0 auto;padding:0 24px}
+        .blog-section{padding:60px 0 80px;background:var(--light-bg)}
+
+        /* BLOG LISTING */
+        .blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:32px;margin-bottom:60px}
+        .blog-card{background:var(--white);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);transition:transform 0.3s,box-shadow 0.3s;cursor:pointer}
+        .blog-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+        .blog-card-img{height:220px;overflow:hidden}
+        .blog-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s}
+        .blog-card:hover .blog-card-img img{transform:scale(1.05)}
+        .blog-card-body{padding:24px}
+        .blog-tag{display:inline-block;padding:3px 12px;border-radius:50px;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+        .tag-travel{background:#e8f5e9;color:#2e7d32}
+        .tag-food{background:#fff3e0;color:#e65100}
+        .tag-adventure{background:#e3f2fd;color:#1565c0}
+        .tag-nature{background:#f3e5f5;color:#7b1fa2}
+        .blog-card-body h2{font-size:1.3rem;color:var(--primary-dark);margin-bottom:10px;line-height:1.4}
+        .blog-card-body p{color:#777;font-size:0.92rem;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+        .blog-meta{display:flex;justify-content:space-between;align-items:center;font-size:0.82rem;color:#aaa}
+        .read-more{color:var(--primary);font-weight:600;font-size:0.9rem}
+        .read-more:hover{color:var(--accent)}
+
+        /* FULL ARTICLE */
+        .article{display:none;background:var(--white);border-radius:16px;padding:48px;margin-bottom:48px;box-shadow:var(--shadow);max-width:800px;margin-left:auto;margin-right:auto}
+        .article.active{display:block}
+        .article-back{display:inline-flex;align-items:center;gap:8px;color:var(--primary);font-weight:600;margin-bottom:24px;cursor:pointer;font-size:0.95rem}
+        .article-back:hover{color:var(--accent)}
+        .article h1{font-size:2rem;color:var(--primary-dark);margin-bottom:16px;line-height:1.3}
+        .article-hero{width:100%;height:360px;object-fit:cover;border-radius:12px;margin-bottom:24px}
+        .article .meta{color:#999;font-size:0.9rem;margin-bottom:28px;display:flex;gap:20px}
+        .article h2{font-size:1.4rem;color:var(--primary-dark);margin:32px 0 12px}
+        .article h3{font-size:1.15rem;color:var(--primary);margin:24px 0 8px}
+        .article p{margin-bottom:16px;color:#444}
+        .article ul{margin:12px 0 20px 20px;color:#444}
+        .article ul li{margin-bottom:8px;list-style:disc}
+        .article blockquote{border-left:4px solid var(--accent);padding:16px 24px;margin:24px 0;background:var(--light-bg);border-radius:0 8px 8px 0;font-style:italic;color:#555}
+        .article .cta-box{background:linear-gradient(135deg,var(--primary-dark),var(--primary));color:var(--white);padding:32px;border-radius:12px;text-align:center;margin:32px 0}
+        .article .cta-box h3{color:var(--white);margin:0 0 8px}
+        .article .cta-box p{color:rgba(255,255,255,0.85);margin-bottom:16px}
+        .article .cta-box a{display:inline-block;padding:12px 32px;background:var(--accent);color:var(--white);border-radius:50px;font-weight:600}
+
+        .footer{background:var(--dark);color:rgba(255,255,255,0.7);padding:40px 0 24px;text-align:center;font-size:0.9rem}
+        .footer a{color:var(--accent)}
+
+        .whatsapp-float{position:fixed;bottom:24px;right:24px;z-index:999;width:56px;height:56px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,0.3);transition:transform 0.3s}
+        .whatsapp-float:hover{transform:scale(1.1)}
+        .whatsapp-float svg{width:28px;height:28px;fill:#fff}
+
+        @media(max-width:768px){
+            .blog-grid{grid-template-columns:1fr}
+            .article{padding:24px}
+            .article h1{font-size:1.6rem}
+            .page-hero h1{font-size:2rem}
+            .nav-links{display:none}
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container">
+        <a href="index.html" class="nav-logo">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAB4AHgDASIAAhEBAxEB/8QAHAAAAgMBAQEBAAAAAAAAAAAAAAUDBAYBAgcI/8QAMhAAAgEDAwMCBgAGAgMAAAAAAQIDAAQRBRIhBjFBE1EUIjJCYXEVFoGRobEjUgeD0f/EABoBAAMBAQEBAAAAAAAAAAAAAAACAwEEBQb/xAAiEQADAQACAgICAwAAAAAAAAAAAQIRAyEEMRJBUfAiYbH/2gAMAwEAAhEDEQA/AP1TRRRQAUEgDJOBUc8ywrlu/ge9LZpnmPzHjwB2rG8Eq1JclvEXhBvP+KrPdSt920fgVBXl2VFLOwVR3JOAKm6ZJ22e2dm+pmP7NcrOaz1VaWTelbn1p/PB2r+/ekknV1xEvrSXNusfsUGP171J80bienJyeXxw8bN+rsv0sw/RqZLqVfu3D8isZo/XGl3belcS+hN4JU7G/R8VqYpEljWSJ1dGGQynINUVb6K8XPHIt460ZxXiNw42H/FWgQRkHIpLUkMzwn5Tx5B7U6r8nRPJ+RtRUcEyzLle/ke1SU5ZPQooooAKjnlEKbjyfA96kJABJ7ClNxKZpC3jsBWN4JdfFHmR2kYsxyTXmiipEArKdQ6iDO6u+IYyQB/2I7mtS7iNGdvpUZP9KwFrp0us6jegyrHIgLqGGQcngfgVx+XVNKJ9sjzU0kp9sTafbk3+mXeqRMLC9mGJW+lsk8E+OffxU40fStO/8hX38WuYU0+1t1uY0uHAXLYwpz3xyceeKhvdUH8sal0zfQOk8APpzMPkRA+SW9sZIHvkDzSzp3RNWm1GHWb7p+fVrD0x6SXE6iRwAAr7WPzcdgePbtRwzKXR4LpfKYmfk9TfT6+mni9b2L+q+oLbVOopb2yysC7UiIXGVUYBx4zzWz6H1v0r+OBZd1rO20rn6GPY48e1ZHrTqSx1iSO1tdDj09oH/wCSR0CyjHBXCgYH7z/SqWhzPBqtpLFyVkViB5AOT/qrJ96Q4/JfH5DpVvfv0foSivEUizRJInKuAw/R5r3Vj6o9Ru0bBlOCKaQSiZNw7+R7UpqS3lMUgbx2IppeFIrGNqKAQQCOxoqhcq6hJtjCDu3+qX1PevuuG9l4qCp09Zz29YUUUUopFdIZbaWNe7IQP7VhJb2XTL2G4twvqcq6N2dfY+37r6BWZ6r0f1kF1b8Op+dfBz5rk8vjppXHtEOeW52fZluoLV9amtYoxDatq0zTOZX4CphUXI787jjycVy+0vqnozRGk07Wbeexj7wzRDMeT9m7Of0D/SrWt6bLd9O2MyKPUs2aKUZ7ITkN/esze6YbqJd88hlT6SzEqPxiudc6h/y+/wB/08fyONy6uU/lnTTz97MrdPf6rfTXV65luZTueRsDPjx+qfdOWoiVx9c3AGPz4FSWnT9/tLCNCrdjvA4rf9EdLiyUXt6Q8xOY0H0rjz+TXRx383iZ5/ieFz8nInSf9tmtsITb2NvC31Rxqp/YFWKKK6z65LFiCiiig0YafJuiKHuv+qKrWT7bhfZuKKpL6Lw9RC53Ox9yTXKKKmQCilkGptJ1FdaU9v6fo28dykxkBEqszLwuMjaVwc+496W23VcV70/capY2c0hiujai3dwjyMXVUIPIw4dHGfDCtDDS1wgEYIyDWM6nulls9chxOJrTUNOJLS70BaSAgxj7RjOR5OT5p3JrFzcXl5HpOnG7htZTDLK1wsIaQcskYIO4jIBJ2jPGeDgw3C5Fp8cM7PCSqOMPGRlWFLLjpayeYyRM8QPPp91/+0v6P1W1h6a1vU5TJFZQalfysGU7o1WQ7l2+4IIwPNWtQ6g1OxhtpZ+n3AuZUgiX41Nyu30rJxhSTxwWG4gEgHNSrgiljQlcc100MLbRIImBlYy47LjApqBgYHaszJ1TI91rNvZaa08ukuwume4WKNVCB1IYg/MynO3HGDkjIzYtuoJdSRX0XT2ukEUcsjzzCBULorrH2Yl9rKTxgZHNNHHMLJQynPQ/orO6f1Ml7qdlaCzlhFwJ0LSyANFPCR6kLKM/Ng7gQcFQSDUup9Qpp9/cQSWskscMUTF4mDM8srFY4VTy7EZ74A5OKfAxj2iksOr3Mep2dnqenfCG9D+g6XCzAsi7irYAwduTkZHB57ZdVgHUO11PsQaK5RWp4aqaOuNrsPYkVyp71Ntw3s3NQUMGsZlus9O1C4utPuNIjZppFl064ZSB6dvMBmTnvsZAcd+aibRbiHrSL4W326HIkV3IwIwk8CGJEx35Uxt/6a11FGhph9bsr6R+pfRsLqQT3mnPCVQESrGYt5Xnsu1s/rjNNNPkuNEl1G0m0++uoZbya6t5rWMSB1lcuVbkbGDMw+bAIwc9wNHRRoaYrTbS4tejOpItet7eCS5u76QxzORCwmcmMb152ncqkjnOarRy6jbjTG6og1iS0tZoQXk+E2rOSER5PTcs4DsOQAM4JBxxuL21gvrSa1u4llt5lKSI3ZgaXpoNt6sL3NzqF4sLiSOK6umkRWU5VsfcQeRuzg89+aNDSDp20khv+pWntZIlutSaVTIoAlT0IkDD3GUYc+1Q2xuNE1PVVksbu5s7y4+LgltIvVKMyIrRsoORgpkHsQ2MgimHUlzdWejyzWBjW59SJEMgyvzSopyP0xpXd3WrW+pT2BleVVha4imijhDsM7QG34UAEMSQDwy5PuAV7jRr6TRL69ih9PWG1A6vbQbgSjqFVYiQcZaNSrYOMyHnjNedR0O61Dp6O4ltWbUXv49UltDN6bHHAh3gjDLHhQc43L3wc16bXNQhhN7JJHPADtX4dA0Lt6WfT8SK5fseVII7ZqbVdQ1KyitxZ3sN091HG6O8ShUJmiTI290YSHGecqOe9BvYaTap/G7aax0q+iCI63F3qZkaRVI4ii3uxyWwSRxhe5OK1VIIYr6HqS1S6vjJF6VwUUIq71zDjdgD5gS3bxj80/oZjOoNzqPcgUVNZJuuF9l5oppWjxKa1lnUI90Ycd1/1S+nRAIIPY0puIjDIV8dwaKX2HJP2R0UUUhMhuLiG2RWnkWMMdq5PLH2A7k/gVy2uobr1fQkDGJ/TkGCCjYBwQeQcEH9EUn1u3v4bmS900iW7l9KCANFuEPJ3EnOBGfqYjk4A9sKY9G6ggivI7XUXiTeArCOMvMxkRnuCf8AuRuG0kDGFAGM1uG4bWispP8AzNOx3whIpZQdkM6RmFFcHaX7kMoIJHk4AA5qaBNa07Q2ZfidR1KR97LO6EBiCWA24CJkBBydoO49iCYGDm9uLJZY7W8aJnkKsInXd9wCkjHHzYAJ89ualurS2vFUXdvDOFOQJUDYP9awP8J1RIY3sxcXWp/PcTLLH6KrKqbYU3HGQpPByRhWOMuWDS8i6uSWV7M27tuG31HG1UEWWOMjczSBRjACjcR34MDDU/BWvxQufhoPiR2l9Mbxxjv37cV5j06yjV1js7ZFdg7BYlAJByCePB5Hsaz/AExLrN1qkz314stjbxeidioVllyPmBUdwoy2ONz7QBsOdVQYRyQRSyRSSxRvJES0bMoJQngkHxUlFSW8RlkC+O5NAJaXNPj2xFz3b/VFWgAAAOwoqiWHSliwKjniEybTwfB9qkorTWtE8iNGxVhgivNNp4VmXDd/B9qWzQvCfmHHgjtU3OHPUNEdFUdZ02HVrBrS5aVY2ZWzG21gVORz+6RfyRpsUbFJr8kCNh/ygkmP6cccZ8gcHyOBWCmror5kVmuJ7i9m6b1lbuYFmBlGDJw24fLgcxoB44PAyczWa3CR6lEvT+riHUdz3Mc0nDE5JAIXK5GRgeGHmjDcPo2R2yP712vmj2bNbNFcdP6i7j1lkzJkvuVQcsqcg7OCMcn8nGjHR2nyRI7S3wnYl3kaQFmLHLBhjackjIx9ooDDT4xwOK7VHRtMh0mxFpbNK0Qd5MytubLHJ5plDC8x+UceSe1Bmb6PMaNIwVRkmmkEQhTaO/k+9EEKwrhe/k+9SU6WF4jAooophwooooAKCARgjIoooAqy2aNyh2H/ABVZ7WVft3D8UUUrlCOEyFkZfqVh+xXKKKRkWjqozfSrH9CpktZW+3aPzRRWpaPMJlmKzReXO8/4q0AAMAYFFFOlhVJL0FFFFaaFFFFAH//Z" alt="Wild Grove Resort">
+            Wild Grove
+        </a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="blog.html" style="color:var(--accent)">Blog</a>
+            <a href="index.html#stays">Stays</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="index.html#book" class="nav-book">Book Now</a>
+        </div>
+    </div>
+</nav>
+
+<section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+        <h1>📝 Blog</h1>
+        <p>Stories, travel tips & insider guides from the heart of the Western Ghats.</p>
+    </div>
+</section>
+
+<section class="blog-section">
+    <div class="container">
+
+        <!-- BLOG LISTING -->
+        <div class="blog-grid" id="blogGrid">
+            <div class="blog-card" onclick="showArticle('article1')">
+                <div class="blog-card-img"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,h=300,fit=crop/dWxB7K93zNS9bx60/whatsapp-image-2025-12-08-at-1.59.19-pm-C1lHzknbqo8E0XJY.jpeg" alt="Weekend getaway from Coimbatore"></div>
+                <div class="blog-card-body">
+                    <span class="blog-tag tag-travel">Travel Guide</span>
+                    <h2>The Perfect Weekend Getaway from Coimbatore — Why Wild Grove Should Be Your First Choice</h2>
+                    <p>Tired of the city rush? Discover how a 1.5-hour drive from Coimbatore can transport you to a world of misty hills, organic farms, and starlit skies.</p>
+                    <div class="blog-meta"><span>📅 June 15, 2026</span><span class="read-more">Read More →</span></div>
+                </div>
+            </div>
+            <div class="blog-card" onclick="showArticle('article2')">
+                <div class="blog-card-img"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,h=300,fit=crop/dWxB7K93zNS9bx60/organic-farming-1024x544-Yg2q811jXyFOjZ1B.png" alt="Organic farming at Wild Grove"></div>
+                <div class="blog-card-body">
+                    <span class="blog-tag tag-nature">Sustainability</span>
+                    <h2>Organic Farming at Wild Grove — How We Nurture the Land That Nurtures You</h2>
+                    <p>From composting and crop rotation to vermiculture and companion planting — discover the sustainable farming practices that make every meal at Wild Grove special.</p>
+                    <div class="blog-meta"><span>📅 May 28, 2026</span><span class="read-more">Read More →</span></div>
+                </div>
+            </div>
+            <div class="blog-card" onclick="showArticle('article3')">
+                <div class="blog-card-img"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,h=300,fit=crop/dWxB7K93zNS9bx60/20191025_173220-YleqwnW7vvtBpk6e.jpg" alt="Birdwatching in Attapadi Western Ghats"></div>
+                <div class="blog-card-body">
+                    <span class="blog-tag tag-adventure">Birdwatching</span>
+                    <h2>25 Stunning Birds You Can Spot in Attapadi — A Birdwatcher's Paradise</h2>
+                    <p>Attapadi and Sholayur sit inside the Nilgiri Biosphere Reserve — home to over 170 bird species including rare Western Ghats endemics. Here's your complete spotting guide.</p>
+                    <div class="blog-meta"><span>📅 May 10, 2026</span><span class="read-more">Read More →</span></div>
+                </div>
+            </div>
+            <div class="blog-card" onclick="showArticle('article4')">
+                <div class="blog-card-img"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,h=300,fit=crop/dWxB7K93zNS9bx60/kerala-food-mv02NGvkvMsa2KkZ.jpg" alt="Farm to table dining"></div>
+                <div class="blog-card-body">
+                    <span class="blog-tag tag-food">Food & Farm</span>
+                    <h2>Farm-to-Table: How We Grow Your Food at Wild Grove Resort</h2>
+                    <p>From our organic farm to your plate in under 100 meters. Discover how sustainable farming powers every meal at Wild Grove.</p>
+                    <div class="blog-meta"><span>📅 April 22, 2026</span><span class="read-more">Read More →</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ARTICLE 1 -->
+        <div class="article" id="article1">
+            <div class="article-back" onclick="hideArticle()">← Back to all posts</div>
+            <span class="blog-tag tag-travel">Travel Guide</span>
+            <h1>The Perfect Weekend Getaway from Coimbatore — Why Wild Grove Should Be Your First Choice</h1>
+            <div class="meta"><span>📅 June 15, 2026</span><span>✍️ By Madhu Ravindran</span><span>⏱️ 6 min read</span></div>
+            <img class="article-hero" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,fit=crop/dWxB7K93zNS9bx60/whatsapp-image-2025-12-08-at-1.59.19-pm-C1lHzknbqo8E0XJY.jpeg" alt="Valley view from Wild Grove Resort">
+
+            <p>If you live in Coimbatore and you've been telling yourself, "I need a break," then keep reading. Because at just 1.5 hours from the city — tucked away in the Sholayur hills of Attapadi — there's a place that feels like a different world entirely.</p>
+
+            <h2>Why Not Just Go to Ooty?</h2>
+            <p>Let's be honest. Ooty is beautiful, but it's also crowded, commercialized, and the drive can take 3-4 hours in peak season. What if there was a place closer, quieter, and more authentic? That's Wild Grove.</p>
+            <p>Perched atop a scenic hill overlooking a sweeping valley, Wild Grove Organic Farm & Resort offers something rare — <strong>genuine silence</strong>. No honking, no traffic, no tourist buses. Just the hum of windmills, birdsong, and the rustle of leaves.</p>
+
+            <h2>The Drive: A Journey in Itself</h2>
+            <p>The route from Coimbatore via Anaikatti Road is spectacular. As the city fades behind you, the Western Ghats unfold in layers of green. You'll pass through small villages, catch glimpses of wildlife, and feel the temperature drop as you climb. The last 20 minutes from Anaikatti to Sholayur are pure magic — hairpin bends with valley views on both sides.</p>
+
+            <h2>What Makes Wild Grove Different</h2>
+            <ul>
+                <li><strong>It's a working organic farm</strong> — not just a hotel with a garden. You'll walk through rows of vegetables, spice plants, and fruit trees that actually feed you during your stay.</li>
+                <li><strong>The stays are unique</strong> — from an Instagram-worthy A-Frame cottage to a traditional Kerala cottage and a spacious three-bedroom villa with a private deck.</li>
+                <li><strong>The food is unforgettable</strong> — traditional Kerala sadya, farm-fresh vegetables, homestyle cooking that tastes like grandmother's kitchen.</li>
+                <li><strong>The activities are real</strong> — night jeep safaris, off-road adventures, astrophotography classes, trekking, and a hilltop pool with infinity views.</li>
+            </ul>
+
+            <blockquote>"We came for one night and wished we'd booked three. The A-Frame cottage, the stargazing, and the Kerala food — unforgettable." — A recent guest</blockquote>
+
+            <h2>The Perfect 2-Night Itinerary</h2>
+            <h3>Day 1: Arrive & Unwind</h3>
+            <p>Check in at 2:00 PM. Settle into your cottage. Take a slow walk through the organic farm. Evening tea on the deck with valley views. Bonfire dinner under the stars.</p>
+            <h3>Day 2: Adventure Day</h3>
+            <p>Morning swim in the hilltop pool. Post-breakfast organic farming class. Afternoon off-road jeep safari through the Western Ghats. Night jeep safari to spot wildlife.</p>
+            <h3>Day 3: Slow Morning</h3>
+            <p>Sunrise yoga on the deck. Leisurely Kerala breakfast. Check out at 11:00 AM with memories (and homemade jam) to take home.</p>
+
+            <div class="cta-box">
+                <h3>Ready to escape the city?</h3>
+                <p>Book your weekend at Wild Grove Resort — starting from ₹2,000/night.</p>
+                <a href="https://wa.me/918618607655?text=Hi!%20I%20read%20your%20blog%20and%20want%20to%20book%20a%20weekend%20getaway!">💬 Book on WhatsApp</a>
+            </div>
+        </div>
+
+        <!-- ARTICLE 2: ORGANIC FARMING -->
+        <div class="article" id="article2">
+            <div class="article-back" onclick="hideArticle()">← Back to all posts</div>
+            <span class="blog-tag tag-nature">Sustainability</span>
+            <h1>Organic Farming at Wild Grove — How We Nurture the Land That Nurtures You</h1>
+            <div class="meta"><span>📅 May 28, 2026</span><span>✍️ By Madhu Ravindran</span><span>⏱️ 7 min read</span></div>
+            <img class="article-hero" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,fit=crop/dWxB7K93zNS9bx60/organic-farming-1024x544-Yg2q811jXyFOjZ1B.png" alt="Organic farming at Wild Grove Resort">
+
+            <p>When I left my 20-year career in IT Security to start Wild Grove, people thought I was crazy. "Why would you leave a comfortable corporate job to dig soil on a hilltop?" they asked. The answer was simple — I wanted to live honestly. And honest living starts with honest food, grown in honest soil.</p>
+            <p>Today, Wild Grove's organic farm is the beating heart of our resort. Every meal our guests eat begins here — in these terraced beds, under these windmills, in this rich red earth of Sholayur.</p>
+
+            <h2>Why Organic? Why Now?</h2>
+            <p>India's soil is in crisis. Decades of chemical farming have depleted nutrients, killed beneficial microorganisms, and poisoned groundwater. The food on most supermarket shelves is grown with synthetic pesticides and fertilizers that harm both the environment and our health.</p>
+            <p>At Wild Grove, we chose a different path. We farm the way our grandparents did — with nature, not against it. The result? Soil that gets richer every year, produce that tastes the way food is supposed to taste, and an ecosystem that thrives around us.</p>
+
+            <h2>Our Core Farming Practices</h2>
+
+            <h3>1. Composting & Vermicomposting</h3>
+            <p>Every bit of organic waste on the farm — kitchen scraps, fallen leaves, cow dung, crop residue — goes into our compost pits. We maintain three stages: fresh waste, decomposing material, and ready-to-use humus. Our vermicompost beds house thousands of red wriggler earthworms that transform waste into black gold — nutrient-rich vermicompost that our plants love.</p>
+
+            <h3>2. Crop Rotation & Companion Planting</h3>
+            <p>We never plant the same crop in the same bed consecutively. Legumes follow heavy feeders, leafy greens follow root vegetables. This keeps the soil balanced and naturally replenishes nitrogen. We also practice companion planting — marigolds next to tomatoes to repel pests, basil alongside peppers to attract pollinators, and lemongrass as a natural mosquito barrier around the property.</p>
+
+            <h3>3. Natural Pest Management</h3>
+            <p>Instead of reaching for chemical pesticides, we use:</p>
+            <ul>
+                <li><strong>Neem oil spray</strong> — a natural insecticide and fungicide made from our own neem trees</li>
+                <li><strong>Panchagavya</strong> — a traditional bio-fertilizer made from five cow products (milk, curd, ghee, urine, and dung)</li>
+                <li><strong>Jivamrutha</strong> — a microbial culture that boosts soil biology</li>
+                <li><strong>Predator insects</strong> — we encourage ladybugs, lacewings, and spiders that naturally control pest populations</li>
+                <li><strong>Physical barriers</strong> — net houses for seedlings, sticky traps for whiteflies</li>
+            </ul>
+
+            <h3>4. Mulching & Water Conservation</h3>
+            <p>Our farm sits on a hilltop where water is precious. We use thick layers of dried leaf mulch and coconut husk around every plant to retain soil moisture, suppress weeds, and regulate soil temperature. Drip irrigation delivers water directly to roots with minimal waste. Rainwater harvesting systems capture monsoon runoff into storage tanks.</p>
+
+            <h3>5. Seed Saving</h3>
+            <p>We save seeds from our best-performing plants each season. This means our crops are naturally adapting to the specific conditions of Sholayur's soil, altitude, and climate — becoming more resilient with each generation. We never use hybrid or GMO seeds.</p>
+
+            <h2>What We Grow</h2>
+            <p>Our farm produces over 30 varieties across the year:</p>
+            <ul>
+                <li><strong>Vegetables:</strong> Tomatoes, brinjal, okra, beans, drumstick, spinach, bottle gourd, bitter gourd, ash gourd, pumpkin, chow-chow, tapioca</li>
+                <li><strong>Greens:</strong> Amaranth, moringa leaves, curry leaves, fenugreek, mint, coriander</li>
+                <li><strong>Spices:</strong> Turmeric, ginger, black pepper, cardamom, cloves, cinnamon</li>
+                <li><strong>Fruits:</strong> Banana, papaya, jackfruit, mango, coconut, passion fruit</li>
+                <li><strong>Specialty crops:</strong> Coffee, cocoa, lemongrass, vetiver (for erosion control)</li>
+            </ul>
+
+            <h2>From Farm to Your Plate</h2>
+            <p>The distance from our farm to the kitchen is less than 100 meters. There's no cold storage, no transportation, no preservatives. The vegetables you eat at lunch were picked that morning. The curry leaves in your sambar were plucked minutes before they hit the pan. The coconut in your chutney was cracked open that day.</p>
+            <p>This is what farm-to-table really means — and you can taste the difference in every single bite.</p>
+
+            <blockquote>"I've eaten at Michelin-starred restaurants, but the sadya at Wild Grove — made from vegetables harvested that morning — was the most flavourful meal I've had. You can't fake freshness." — Suresh, guest from Mumbai</blockquote>
+
+            <h2>Join Our Farming Class</h2>
+            <p>Every guest at Wild Grove is welcome to walk the farm, ask questions, and get their hands dirty. Our structured farming class includes:</p>
+            <ul>
+                <li>A guided walk through every section of the farm with our head farmer</li>
+                <li>Hands-on experience with composting and vermicomposting</li>
+                <li>Learning about natural pest management and Panchagavya preparation</li>
+                <li>Planting a sapling that we'll nurture after you leave</li>
+                <li>Harvesting vegetables that go straight into your next meal</li>
+            </ul>
+            <p>Children absolutely love it — pulling up carrots, spotting earthworms, and understanding where food really comes from. It's one of our most requested activities.</p>
+
+            <h2>Our Vision: Beyond the Farm</h2>
+            <p>Wild Grove isn't just about growing food for our guests. We're building a model for sustainable hill agriculture that can be replicated. We work with local tribal farmers in Attapadi, sharing seeds, techniques, and knowledge. We dream of a day when every resort in the Western Ghats grows its own food organically — because the hills deserve better than chemicals.</p>
+
+            <div class="cta-box">
+                <h3>Experience organic farming firsthand</h3>
+                <p>Every stay at Wild Grove includes farm access. Farming classes available on request — perfect for families, couples, and anyone curious about sustainable living.</p>
+                <a href="https://wa.me/918618607655?text=Hi!%20I%20want%20to%20book%20a%20stay%20with%20organic%20farming%20class!">💬 Book Your Farm Stay</a>
+            </div>
+        </div>
+
+        <!-- ARTICLE 3: BIRDS OF ATTAPADI -->
+        <div class="article" id="article3">
+            <div class="article-back" onclick="hideArticle()">← Back to all posts</div>
+            <span class="blog-tag tag-adventure">Birdwatching</span>
+            <h1>25 Stunning Birds You Can Spot in Attapadi — A Birdwatcher's Paradise at Wild Grove</h1>
+            <div class="meta"><span>📅 May 10, 2026</span><span>✍️ By Madhu Ravindran</span><span>⏱️ 8 min read</span></div>
+            <img class="article-hero" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,fit=crop/dWxB7K93zNS9bx60/20191025_173220-YleqwnW7vvtBpk6e.jpg" alt="Western Ghats forest trails for birdwatching">
+
+            <p>If you're a birdwatcher — or even mildly curious about birds — Attapadi should be on your bucket list. Nestled within the Nilgiri Biosphere Reserve, the Sholayur hills where Wild Grove Resort sits are part of one of the world's most biodiverse regions. Over <strong>170 species of birds</strong> have been recorded in the Attapadi region, including several rare Western Ghats endemics that you simply won't find elsewhere.</p>
+            <p>Here's your complete guide to the birds you can spot right from our resort — and on the trails around Sholayur.</p>
+
+            <h2>🦅 Raptors & Birds of Prey</h2>
+            <p>The thermals rising from the Attapadi valley make it a paradise for raptors. Look up, and you'll often see them circling.</p>
+            <ul>
+                <li><strong>Crested Serpent Eagle</strong> — the most commonly seen raptor here. Its distinctive whistling call echoes through the valleys. You'll often spot it perched on tall trees scanning for snakes below.</li>
+                <li><strong>Shaheen Falcon</strong> — the Indian subspecies of the Peregrine Falcon. Rare and magnificent, occasionally seen hunting at dawn from the cliff faces near Sholayur.</li>
+                <li><strong>Black Eagle</strong> — look for its broad, fingered wings and slow soaring flight over the canopy. One of the most majestic sights in the Western Ghats.</li>
+                <li><strong>Brahminy Kite</strong> — chestnut and white, unmistakable. Often seen gliding over the river valleys below the resort.</li>
+            </ul>
+
+            <h2>🦜 Hornbills & Large Forest Birds</h2>
+            <p>The dense forests around Attapadi are home to some of India's most spectacular large birds.</p>
+            <ul>
+                <li><strong>Malabar Grey Hornbill</strong> — a Western Ghats endemic! These charismatic birds are frequently seen around Wild Grove, hopping through fig trees with their distinctive curved bills. Their laughing calls are one of the signature sounds of our resort.</li>
+                <li><strong>Great Indian Hornbill</strong> — enormous, with a wingspan of 5 feet and a bright yellow casque. Rare but occasionally spotted in the deep forests near Sholayur. Hearing its wingbeats overhead — a deep, rhythmic whooshing — is an unforgettable experience.</li>
+                <li><strong>Indian Grey Hornbill</strong> — smaller and more common than its Malabar cousin, but equally delightful to watch as it tosses berries into the air and catches them.</li>
+            </ul>
+
+            <h2>🐦 Western Ghats Endemics</h2>
+            <p>These birds are found <strong>only in the Western Ghats</strong> — nowhere else on Earth. Spotting even a few of these makes any birder's trip worthwhile.</p>
+            <ul>
+                <li><strong>Nilgiri Flycatcher</strong> — a stunning indigo-blue bird with a soft, melancholic call. Found in shola forests above 1000m. Best spotted during early morning walks along the ridge trail.</li>
+                <li><strong>White-bellied Blue Flycatcher</strong> — deep blue with a clean white belly. Skulks in the undergrowth but will perch in the open briefly, rewarding patient observers.</li>
+                <li><strong>Malabar Parakeet</strong> (Blue-winged Parakeet) — a gorgeous green-and-blue parakeet with a red bill. Moves in noisy flocks through the canopy — you'll hear them before you see them.</li>
+                <li><strong>Flame-throated Bulbul</strong> — olive-green with a striking orange-red throat. Endemic to the Western Ghats and a common garden visitor at Wild Grove.</li>
+                <li><strong>White-bellied Treepie</strong> — a member of the crow family but far more elegant, with a long graduated tail and rufous-brown plumage. Often seen hopping through branches near our Kerala Cottage.</li>
+                <li><strong>Crimson-backed Sunbird</strong> — tiny, jewel-like, with iridescent crimson and purple plumage. The males glitter like living gemstones as they feed on flowers around the resort.</li>
+                <li><strong>Nilgiri Woodpigeon</strong> — large, handsome, and shy. Its deep booming call resonates through the morning mist in the shola patches above Sholayur.</li>
+                <li><strong>White-cheeked Barbet</strong> — plump, green, and always calling — "kutruk-kutruk-kutruk." One of the easiest endemics to spot, often seen in fruiting trees near the villa.</li>
+            </ul>
+
+            <blockquote>"I came to Wild Grove for a relaxing weekend. I left as a birdwatcher. The Malabar Grey Hornbill sitting in the jackfruit tree right outside my cottage window at sunrise — I'll never forget that moment." — Kavitha, guest from Chennai</blockquote>
+
+            <h2>🦉 Owls & Nocturnal Birds</h2>
+            <p>The forests around Wild Grove come alive after dark with nocturnal species. Our night safari provides excellent opportunities to spot them.</p>
+            <ul>
+                <li><strong>Mottled Wood Owl</strong> — large, buff-and-brown, with a haunting "hu-hu-hu-hoo" call that echoes through the night. Sometimes spotted roosting in large trees during the day.</li>
+                <li><strong>Indian Scops Owl</strong> — tiny and perfectly camouflaged. Its trembling whistle call is a common night sound at Wild Grove.</li>
+                <li><strong>Sri Lanka Frogmouth</strong> — one of the most sought-after birds in the Western Ghats! Extremely well-camouflaged and resembling a broken branch. Our guides know a few reliable roosting spots — ask during your stay!</li>
+                <li><strong>Jerdon's Nightjar</strong> — seen hawking insects over open areas at dusk. Its churring song is part of the Sholayur soundscape every evening.</li>
+            </ul>
+
+            <h2>🌿 Common Residents You'll See Every Day</h2>
+            <p>Even without going on a dedicated birding walk, you'll spot these species just sitting on your cottage veranda:</p>
+            <ul>
+                <li><strong>Indian Roller</strong> — electric blue wings flash as it dives from its perch</li>
+                <li><strong>Black-hooded Oriole</strong> — bright golden-yellow with a jet-black hood</li>
+                <li><strong>White-browed Wagtail</strong> — dainty, constantly bobbing its tail by the pool</li>
+                <li><strong>Greater Coucal</strong> — deep, booming calls at dawn; glossy black and chestnut</li>
+                <li><strong>Purple Sunbird</strong> — males shimmer metallic purple in sunlight</li>
+                <li><strong>Indian Paradise Flycatcher</strong> — the male's long, streaming white tail ribbons are unmistakable</li>
+            </ul>
+
+            <h2>🗓️ Best Time for Birdwatching at Wild Grove</h2>
+            <p>Birds are here year-round, but different seasons offer different highlights:</p>
+            <ul>
+                <li><strong>October – February (Winter)</strong> — Best overall. Resident birds are joined by winter migrants from the Himalayas and Central Asia. Cool mornings make for comfortable walks. Peak activity 6:00 – 9:00 AM.</li>
+                <li><strong>March – May (Summer)</strong> — Breeding season. Males in full plumage, active display calls. Great for photography. Listen for hornbill calls at dawn.</li>
+                <li><strong>June – September (Monsoon)</strong> — Lush greenery, fewer visitors. Some species are harder to spot in the rain, but the forest is magical. Frogmouths and nightjars more vocal.</li>
+            </ul>
+
+            <h2>🎒 What to Bring for Birding</h2>
+            <ul>
+                <li><strong>Binoculars</strong> — 8x42 or 10x42 are ideal (we can lend a pair on request)</li>
+                <li><strong>Field guide</strong> — "Birds of the Indian Subcontinent" by Grimmett, Inskipp & Inskipp</li>
+                <li><strong>Camera with zoom lens</strong> — 200mm minimum, 400mm+ ideal</li>
+                <li><strong>Muted clothing</strong> — greens, browns, greys (avoid bright colors)</li>
+                <li><strong>Patience and silence</strong> — the two most important tools any birder can carry</li>
+            </ul>
+
+            <div class="cta-box">
+                <h3>🐦 Come for the peace, stay for the birds</h3>
+                <p>Wild Grove Resort sits at the heart of Attapadi's birding territory. Every stay includes access to nature trails. We can arrange guided birdwatching walks with local experts.</p>
+                <a href="https://wa.me/918618607655?text=Hi!%20I%20want%20to%20book%20a%20birdwatching%20stay%20at%20Wild%20Grove!">💬 Book a Birding Stay</a>
+            </div>
+        </div>
+
+        <!-- ARTICLE 4: FARM TO TABLE -->
+        <div class="article" id="article4">
+            <div class="article-back" onclick="hideArticle()">← Back to all posts</div>
+            <span class="blog-tag tag-food">Food & Farm</span>
+            <h1>Farm-to-Table: How We Grow Your Food at Wild Grove Resort</h1>
+            <div class="meta"><span>📅 April 22, 2026</span><span>✍️ By Smitha Ravindran</span><span>⏱️ 5 min read</span></div>
+            <img class="article-hero" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,fit=crop/dWxB7K93zNS9bx60/kerala-food-mv02NGvkvMsa2KkZ.jpg" alt="Kerala food at Wild Grove">
+
+            <p>When we say "farm-to-table," we mean it literally. The distance from our organic farm to your dining table at Wild Grove Resort? Less than 100 meters. No trucks, no warehouses, no preservatives. Just soil, sunshine, love, and your plate.</p>
+
+            <h2>The Kerala Kitchen</h2>
+            <p>Our kitchen is run by local cooks who've been making traditional Kerala food for decades. Every meal is a celebration of seasonal, local, organic ingredients. Here's what a typical day tastes like:</p>
+            <h3>Breakfast</h3>
+            <p><strong>Puttu & kadala curry, appam & stew, dosa with coconut chutney, fresh fruit</strong> — all made from scratch that morning. The coconut is grated from our own trees. The curry leaves were picked minutes before they hit the pan.</p>
+            <h3>Lunch</h3>
+            <p><strong>Kerala sadya-style meal</strong> — served on a banana leaf with rice, sambar, rasam, avial, thoran, pickle, and payasam for dessert. Every component uses ingredients from our farm or sourced from neighboring organic farmers.</p>
+            <h3>Dinner</h3>
+            <p><strong>Homestyle Kerala dinner</strong> — chapati with vegetable curry, fish curry (for non-veg guests), or a hearty dal with farm-fresh vegetables. Finished with a warm cup of jaggery tea.</p>
+
+            <blockquote>"I've eaten at fine-dining restaurants across India, but the simplest meal at Wild Grove — rice, sambar, and thoran on a banana leaf — was the most satisfying meal I've had in years." — Priya, food blogger from Chennai</blockquote>
+
+            <h2>Join Our Farming Class</h2>
+            <p>Want to get your hands dirty? Our organic farming class lets you:</p>
+            <ul>
+                <li>Walk through the farm with our head farmer</li>
+                <li>Learn about composting, mulching, and natural pest control</li>
+                <li>Plant a sapling (which we'll nurture after you leave!)</li>
+                <li>Harvest vegetables that go straight into your next meal</li>
+            </ul>
+            <p>Kids absolutely love it — and it's one of the most popular activities at the resort.</p>
+
+            <div class="cta-box">
+                <h3>Taste the difference organic makes</h3>
+                <p>Every stay at Wild Grove includes access to the farm. Farming classes available on request.</p>
+                <a href="https://wa.me/918618607655?text=Hi!%20I%20want%20to%20book%20a%20stay%20with%20farming%20class!">💬 Book Your Farm Stay</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer class="footer">
+    <div>🌿 Wild Grove Resort — Sholayur, Attapadi, Anaikatti 678581</div>
+    <div style="margin-top:8px;">📞 <a href="tel:+918618607655">+91 86186 07655</a> &nbsp;|&nbsp; ✉️ <a href="mailto:madhu.ravindran@wildgroveresort.com">madhu.ravindran@wildgroveresort.com</a></div>
+    <div style="margin-top:12px;">© 2026 Wild Grove Resort. All rights reserved. &nbsp;|&nbsp; <a href="index.html">Home</a> &nbsp;|&nbsp; <a href="gallery.html">Gallery</a></div>
+</footer>
+
+<a href="https://wa.me/918618607655?text=Hello!%20I'd%20like%20to%20know%20more%20about%20Wild%20Grove%20Resort." class="whatsapp-float" target="_blank">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+function showArticle(id) {
+    document.getElementById('blogGrid').style.display = 'none';
+    document.querySelectorAll('.article').forEach(a => a.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo({top: 400, behavior: 'smooth'});
+}
+function hideArticle() {
+    document.querySelectorAll('.article').forEach(a => a.classList.remove('active'));
+    document.getElementById('blogGrid').style.display = 'grid';
+    window.scrollTo({top: 400, behavior: 'smooth'});
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Wild Grove Resort — Photos & Videos</title>
+    <meta name="description" content="Browse photos of Wild Grove Resort — villa interiors, A-frame cottage, hilltop pool, Kerala food, organic farm, valley views, bonfire nights & more. Anaikatti, near Coimbatore.">
+    <meta property="og:title" content="Gallery | Wild Grove Resort">
+    <meta property="og:description" content="See stunning photos of our hilltop eco-farmstay — villa, cottages, pool, food, farm & nature.">
+    <meta property="og:image" content="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1200,fit=crop/dWxB7K93zNS9bx60/whatsapp-image-2025-12-08-at-1.59.19-pm-C1lHzknbqo8E0XJY.jpeg">
+    <style>
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{scroll-behavior:smooth}
+        body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:#2d3436;line-height:1.7;background:#fff}
+        a{text-decoration:none;color:inherit}
+        img{max-width:100%;height:auto;display:block}
+        :root{--primary:#2d6a4f;--primary-dark:#1b4332;--accent:#d4a373;--accent-dark:#b07d4f;--light-bg:#f8f9f0;--dark:#1a1a2e;--white:#fff;--shadow:0 4px 24px rgba(0,0,0,0.08);--shadow-lg:0 8px 40px rgba(0,0,0,0.12)}
+
+        /* NAV */
+        .navbar{background:var(--primary-dark);padding:14px 0;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,0.1)}
+        .navbar .container{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+        .nav-logo{font-size:1.4rem;font-weight:700;color:var(--white);display:flex;align-items:center;gap:10px}
+        .nav-logo img{width:40px;height:40px;border-radius:50%;object-fit:cover}
+        .nav-links{display:flex;gap:24px;align-items:center}
+        .nav-links a{color:rgba(255,255,255,0.85);font-weight:500;font-size:0.95rem;transition:color 0.3s}
+        .nav-links a:hover{color:var(--accent)}
+        .nav-book{background:var(--accent)!important;color:var(--white)!important;padding:8px 22px!important;border-radius:50px!important;font-weight:600!important}
+
+        /* HERO */
+        .page-hero{position:relative;height:50vh;min-height:340px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--white);overflow:hidden}
+        .page-hero-bg{position:absolute;inset:0;background:url('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1920,fit=crop/dWxB7K93zNS9bx60/20191025_173220-YleqwnW7vvtBpk6e.jpg') center/cover no-repeat}
+        .page-hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.3),rgba(0,0,0,0.6))}
+        .page-hero-content{position:relative;z-index:2}
+        .page-hero h1{font-size:3rem;margin-bottom:12px;text-shadow:0 2px 16px rgba(0,0,0,0.3)}
+        .page-hero p{font-size:1.15rem;opacity:0.9;max-width:600px;margin:0 auto}
+
+        /* FILTER TABS */
+        .filter-bar{background:var(--white);border-bottom:1px solid #eee;padding:16px 0;position:sticky;top:60px;z-index:90}
+        .filter-bar .container{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+        .filter-btn{padding:8px 22px;border-radius:50px;border:2px solid #ddd;background:var(--white);color:#666;cursor:pointer;font-size:0.9rem;font-weight:600;transition:all 0.3s}
+        .filter-btn:hover{border-color:var(--primary);color:var(--primary)}
+        .filter-btn.active{background:var(--primary);color:var(--white);border-color:var(--primary)}
+
+        /* GALLERY GRID */
+        .gallery-section{padding:48px 0 80px}
+        .gallery-section .container{max-width:1200px;margin:0 auto;padding:0 24px}
+        .gallery-masonry{columns:3;column-gap:16px}
+        .gallery-card{break-inside:avoid;margin-bottom:16px;border-radius:12px;overflow:hidden;position:relative;cursor:pointer;box-shadow:var(--shadow);transition:transform 0.3s,box-shadow 0.3s}
+        .gallery-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+        .gallery-card img{width:100%;display:block;transition:transform 0.5s}
+        .gallery-card:hover img{transform:scale(1.05)}
+        .gallery-card .card-label{position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(0,0,0,0.7));color:#fff;font-size:0.9rem;font-weight:500;opacity:0;transition:opacity 0.3s}
+        .gallery-card:hover .card-label{opacity:1}
+        .gallery-card[data-category]{display:block}
+        .gallery-card.hidden{display:none}
+
+        /* LIGHTBOX */
+        .lightbox{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.92);display:none;align-items:center;justify-content:center;cursor:pointer}
+        .lightbox.open{display:flex}
+        .lightbox img{max-width:90vw;max-height:85vh;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,0.5)}
+        .lightbox-close{position:absolute;top:24px;right:32px;color:#fff;font-size:2rem;cursor:pointer;background:rgba(255,255,255,0.1);width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:none}
+        .lightbox-close:hover{background:rgba(255,255,255,0.2)}
+        .lightbox-caption{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.8);font-size:1rem;text-align:center}
+        .lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:2.5rem;cursor:pointer;background:rgba(255,255,255,0.1);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:none;transition:background 0.3s}
+        .lightbox-nav:hover{background:rgba(255,255,255,0.2)}
+        .lightbox-prev{left:24px}
+        .lightbox-next{right:24px}
+
+        /* FOOTER */
+        .footer{background:var(--dark);color:rgba(255,255,255,0.7);padding:40px 0 24px;text-align:center;font-size:0.9rem}
+        .footer a{color:var(--accent)}
+
+        /* WHATSAPP */
+        .whatsapp-float{position:fixed;bottom:24px;right:24px;z-index:999;width:56px;height:56px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,0.3);transition:transform 0.3s}
+        .whatsapp-float:hover{transform:scale(1.1)}
+        .whatsapp-float svg{width:28px;height:28px;fill:#fff}
+
+        @media(max-width:900px){.gallery-masonry{columns:2}}
+        @media(max-width:600px){
+            .gallery-masonry{columns:1}
+            .page-hero h1{font-size:2rem}
+            .nav-links{display:none}
+            .filter-bar .container{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}
+            .filter-btn{white-space:nowrap;flex-shrink:0}
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar">
+    <div class="container">
+        <a href="index.html" class="nav-logo">
+            <img src="data:image/jpeg;base64,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" alt="Wild Grove Resort">
+            Wild Grove
+        </a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="gallery.html" style="color:var(--accent)">Gallery</a>
+            <a href="blog.html">Blog</a>
+            <a href="index.html#stays">Stays</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="index.html#book" class="nav-book">Book Now</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+        <h1>📸 Gallery</h1>
+        <p>A visual journey through Wild Grove Resort — the views, the stays, the food, and the moments.</p>
+    </div>
+</section>
+
+<!-- FILTER -->
+<div class="filter-bar">
+    <div class="container">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="stays">🏠 Stays</button>
+        <button class="filter-btn" data-filter="pool">🏊 Pool & Views</button>
+        <button class="filter-btn" data-filter="food">🍛 Food</button>
+        <button class="filter-btn" data-filter="activities">🏕️ Activities</button>
+        <button class="filter-btn" data-filter="nature">🌿 Nature & Farm</button>
+    </div>
+</div>
+
+<!-- GALLERY -->
+<section class="gallery-section">
+    <div class="container">
+        <div class="gallery-masonry" id="galleryGrid">
+
+            <div class="gallery-card" data-category="stays"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/dWxB7K93zNS9bx60/house-front2-Yleq8VzPlWIvyD27.jpg" alt="Modern three-bedroom villa exterior"><div class="card-label">Three-Bedroom Villa — Exterior</div></div>
+
+            <div class="gallery-card" data-category="stays"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/dWxB7K93zNS9bx60/entrance---hall-YBge0KLDkQTXZvRr.JPG" alt="Villa entrance and living hall"><div class="card-label">Villa — Entrance & Living Hall</div></div>
+
+            <div class="gallery-card" data-category="pool"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/dWxB7K93zNS9bx60/img_20250502_084347-mjE7eDZj8PfMBWKX.jpg" alt="Hilltop infinity pool with valley views"><div class="card-label">Hilltop Pool — Valley Views</div></div>
+
+            <div class="gallery-card" data-category="stays"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/dWxB7K93zNS9bx60/dsc_8966-YanqXVOe8vTDk7pn.jpg" alt="Villa interior with warm lighting"><div class="card-label">Villa — Interior</div></div>
+
+            <div class="gallery-card" data-category="food"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/dWxB7K93zNS9bx60/kerala-food-mv02NGvkvMsa2KkZ.jpg" alt="Traditional Kerala sadya meal"><div class="card-label">Kerala Sadya — Farm to Table</div></div>
+
+            <div class="gallery-card" data-category="stays"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/dWxB7K93zNS9bx60/dsc_8972-A0x15poL88heOZDa.jpg" alt="Cozy bedroom at the villa"><div class="card-label">Villa — Bedroom</div></div>
+
+            <div class="gallery-card" data-category="nature"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/dWxB7K93zNS9bx60/20191025_173220-YleqwnW7vvtBpk6e.jpg" alt="Trekking trail through Western Ghats"><div class="card-label">Trekking Trail — Western Ghats</div></div>
+
+            <div class="gallery-card" data-category="stays"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/dWxB7K93zNS9bx60/whatsapp-image-2025-12-01-at-16.28.30_41c7aab4-VQbrShBta6F9QTf3.jpg" alt="A-Frame cottage with triangular roof"><div class="card-label">A-Frame Cottage — Signature Stay</div></div>
+
+            <div class="gallery-card" data-category="activities"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/dWxB7K93zNS9bx60/night-safari-AR0Mww93GLI8bovR.jpg" alt="Night jeep safari through forest"><div class="card-label">Night Jeep Safari</div></div>
+
+            <div class="gallery-card" data-category="stays"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/dWxB7K93zNS9bx60/bed2-2-YX4avpW0vyH8L7Be.JPG" alt="Comfortable bed with nature view"><div class="card-label">Villa — Bedroom with View</div></div>
+
+            <div class="gallery-card" data-category="food"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/dWxB7K93zNS9bx60/kerala-food-2-mP42Jg0D8OSokLDv.jpg" alt="Kerala dishes spread"><div class="card-label">Organic Kerala Cuisine</div></div>
+
+            <div class="gallery-card" data-category="nature"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/dWxB7K93zNS9bx60/organic-farming-1024x544-Yg2q811jXyFOjZ1B.png" alt="Organic farming at Wild Grove"><div class="card-label">Organic Farm — Hands-on Learning</div></div>
+
+            <div class="gallery-card" data-category="activities"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/dWxB7K93zNS9bx60/offroading-YD0Bxx9yRPsQ2DDK.jpg" alt="Offroad jeep adventure"><div class="card-label">Off-Road Jeep Adventure</div></div>
+
+            <div class="gallery-card" data-category="activities"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/dWxB7K93zNS9bx60/bonfire-mnlqLwRznlFezjl7.jpg" alt="Evening bonfire"><div class="card-label">Bonfire Under the Stars</div></div>
+
+            <div class="gallery-card" data-category="stays"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/dWxB7K93zNS9bx60/whatsapp-image-2025-02-21-at-4.21.24-pm-2-AMqleo1M2QInMV7r.jpeg" alt="Kerala cottage exterior"><div class="card-label">Kerala Cottage — Charming & Cozy</div></div>
+
+            <div class="gallery-card" data-category="nature"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/dWxB7K93zNS9bx60/img_20210611_123612-AVL1EK7yvrT9nkND.jpg" alt="River and valley landscape"><div class="card-label">River Valley — Lazy Picnic Spot</div></div>
+
+            <div class="gallery-card" data-category="stays"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/dWxB7K93zNS9bx60/whatsapp-image-2025-12-01-at-16.31.12_a5d21b28-Cfcldi1LNbd6QXuK.jpg" alt="Group living cottage"><div class="card-label">Group Living Cottage</div></div>
+
+            <div class="gallery-card" data-category="activities"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/dWxB7K93zNS9bx60/astro-m5KLRPPvLbcqD8ek.jpg" alt="Astrophotography at Wild Grove"><div class="card-label">Astrophotography — Zero Light Pollution</div></div>
+
+            <div class="gallery-card" data-category="pool"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/dWxB7K93zNS9bx60/whatsapp-image-2025-12-08-at-1.59.19-pm-C1lHzknbqo8E0XJY.jpeg" alt="Panoramic valley view from resort"><div class="card-label">Panoramic Valley View</div></div>
+
+            <div class="gallery-card" data-category="nature"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/dWxB7K93zNS9bx60/whatsapp-image-2025-12-01-at-16.26.14_f2c69a88-xw8L49auwbtllZpL.jpg" alt="Mountain view tent stay"><div class="card-label">Mountain View — Tent Stay</div></div>
+
+            <div class="gallery-card" data-category="nature"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/dWxB7K93zNS9bx60/img_20250415_131340-YleWB0exbZHpqz0j.jpg" alt="Founders at the organic farm"><div class="card-label">Madhu & Smitha — At the Farm</div></div>
+
+        </div>
+    </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lbClose">✕</button>
+    <button class="lightbox-nav lightbox-prev" id="lbPrev">‹</button>
+    <button class="lightbox-nav lightbox-next" id="lbNext">›</button>
+    <img id="lbImg" src="" alt="">
+    <div class="lightbox-caption" id="lbCaption"></div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div>🌿 Wild Grove Resort — Sholayur, Attapadi, Anaikatti 678581</div>
+    <div style="margin-top:8px;">📞 <a href="tel:+918618607655">+91 86186 07655</a> &nbsp;|&nbsp; ✉️ <a href="mailto:madhu.ravindran@wildgroveresort.com">madhu.ravindran@wildgroveresort.com</a></div>
+    <div style="margin-top:12px;">© 2026 Wild Grove Resort. All rights reserved. &nbsp;|&nbsp; <a href="index.html">Home</a> &nbsp;|&nbsp; <a href="blog.html">Blog</a></div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/918618607655?text=Hello!%20I'd%20like%20to%20know%20more%20about%20Wild%20Grove%20Resort." class="whatsapp-float" target="_blank">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// Filter
+document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.gallery-card').forEach(card => {
+            if (filter === 'all' || card.dataset.category === filter) {
+                card.classList.remove('hidden');
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+    });
+});
+
+// Lightbox
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+const lbCaption = document.getElementById('lbCaption');
+let currentIdx = 0;
+let visibleCards = [];
+
+function getVisibleCards() {
+    return [...document.querySelectorAll('.gallery-card:not(.hidden)')];
+}
+
+document.querySelectorAll('.gallery-card').forEach(card => {
+    card.addEventListener('click', () => {
+        visibleCards = getVisibleCards();
+        currentIdx = visibleCards.indexOf(card);
+        showLightbox(currentIdx);
+    });
+});
+
+function showLightbox(idx) {
+    const card = visibleCards[idx];
+    if (!card) return;
+    lbImg.src = card.querySelector('img').src.replace('w=600', 'w=1200');
+    lbCaption.textContent = card.querySelector('.card-label')?.textContent || '';
+    lb.classList.add('open');
+}
+
+document.getElementById('lbClose').addEventListener('click', () => lb.classList.remove('open'));
+lb.addEventListener('click', (e) => { if (e.target === lb) lb.classList.remove('open'); });
+document.getElementById('lbPrev').addEventListener('click', (e) => { e.stopPropagation(); currentIdx = (currentIdx - 1 + visibleCards.length) % visibleCards.length; showLightbox(currentIdx); });
+document.getElementById('lbNext').addEventListener('click', (e) => { e.stopPropagation(); currentIdx = (currentIdx + 1) % visibleCards.length; showLightbox(currentIdx); });
+document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') lb.classList.remove('open');
+    if (e.key === 'ArrowLeft') { currentIdx = (currentIdx - 1 + visibleCards.length) % visibleCards.length; showLightbox(currentIdx); }
+    if (e.key === 'ArrowRight') { currentIdx = (currentIdx + 1) % visibleCards.length; showLightbox(currentIdx); }
+});
+</script>
+</body>
+</html>
